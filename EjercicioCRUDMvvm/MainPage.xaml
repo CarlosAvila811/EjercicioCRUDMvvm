@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EjercicioCRUDMvvm.ViewModels"
+             x:Class="EjercicioCRUDMvvm.MainPage">
+    <ContentPage.BindingContext>
+        <viewmodels:ProveedorViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10">
+        <Entry Placeholder="Nombre" Text="{Binding Proveedor.Nombre, Mode=TwoWay}" />
+        <Entry Placeholder="Dirección" Text="{Binding Proveedor.Direccion, Mode=TwoWay}" />
+        <Entry Placeholder="Teléfono" Text="{Binding Proveedor.Telefono, Mode=TwoWay}" />
+        <Entry Placeholder="Email" Text="{Binding Proveedor.Email, Mode=TwoWay}" />
+        <Entry Placeholder="Ciudad" Text="{Binding Proveedor.Ciudad, Mode=TwoWay}" />
+        <Button Text="Guardar" Command="{Binding GuardarCommand}" />
+        <Button Text="Eliminar" Command="{Binding EliminarCommand}" />
+        <Button Text="Cargar" Command="{Binding CargarCommand}" />
+
+        <ListView ItemsSource="{Binding Proveedores}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Nombre}" Detail="{Binding Ciudad}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
